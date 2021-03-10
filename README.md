@@ -12,6 +12,18 @@ And you are just a beginner in python and the following syntax is good enough fo
 
 ## How to use it
 
+### Links
+1. [The basic](#the-basic)
+2. [Catch exeption](#catch-exeption)
+3. [Wait](#wait)
+4. [Delete the task object](#delete-the-task-object)
+5. [Stop all](#stop-all)
+6. [Multi-threading examples](#multi-threading)
+    1. [Loading web pages](#multi-threading)
+    2. [Lock your access](#lock-your-access)
+    3. [Create an observer](#create-an-observer)
+
+
 ### The basic
 ```python
 #Declare the functions that will be executed asynchronously
@@ -109,7 +121,7 @@ You can stop the task with the *stop* function
 ```python
 my_beautifull_task = task(lambda data: call_something()
 ).then(lambda data: receive_the_response(data)
-).then(lambda data: finaly_do_this(data).wait()
+).then(lambda data: finaly_do_this(data)
 
 my_beautifull_task.stop() # will stop the execution after the end of the current task 
 ```
