@@ -1,3 +1,5 @@
+# WARNING DEV PROCESS
+
 # Pytask
 
 This python project is for anybody who wants to do asynchronous tasks with an easy format. This is clearly inspired by the system of *Promise* in JS. There are not all the Promise functionalities and the realisation is not the same but you will find some similarities in the usage.
@@ -24,6 +26,18 @@ pipenv shell
 pipenv install -d
 python -m pytest
 ```
+
+### Links
+1. [The basic](#the-basic)
+2. [Catch exeption](#catch-exeption)
+3. [Wait](#wait)
+4. [Delete the task object](#delete-the-task-object)
+5. [Stop all](#stop-all)
+6. [Multi-threading examples](#multi-threading)
+    1. [Loading web pages](#multi-threading)
+    2. [Lock your access](#lock-your-access)
+    3. [Create an observer](#create-an-observer)
+
 
 ### The basic
 ```python
@@ -122,7 +136,7 @@ You can stop the task with the *stop* function
 ```python
 my_beautifull_task = task(lambda data: call_something()
 ).then(lambda data: receive_the_response(data)
-).then(lambda data: finaly_do_this(data).wait()
+).then(lambda data: finaly_do_this(data)
 
 my_beautifull_task.stop() # will stop the execution after the end of the current task 
 ```
