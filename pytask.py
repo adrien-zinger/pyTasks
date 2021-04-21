@@ -5,6 +5,28 @@ import sys
 
 class task():
 
+    class func_iterator ():
+        def __init__(self, data):
+            self.func_list = []
+            self.data = data
+            self.error = None
+        def add_func(self, func):
+            self.func_list.append(func)
+        def __iter__(self):
+            self.index = 0
+            return self
+        def __next__(self):
+            if self.error:
+                return StopIteration
+            try:
+                if len(self.func_list) > 
+                self.data = self.func_list[self.index](self.data)
+                self.index = self.index + 1
+            except ValueError as err:
+                self.error  = err
+            except:
+                raise
+    #Iterator
     class task_thread (threading.Thread):
         def __init__(self, fct, data):
             threading.Thread.__init__(self)
@@ -23,7 +45,6 @@ class task():
         def run(self):
             while self.should_continue():
                 self.exec_if()
-            sys.exit()
 
         def should_continue(self):
             return self.running and (not self.task_killed or not self.get_next() == None)
@@ -47,19 +68,8 @@ class task():
                         self.error_raised = True
                         self.data = sys.exc_info()[0]
                 if self.error_raised and not self.catch == None:
+                    print("call catch")
                     self.catch(self.data)
-
-        def get_next(self):
-            for fct in self.fct_list:
-                if fct[1] == task.status.waiting:
-                    return fct
-                if fct[1] == task.status.failed:
-                    return None
-            if self.loop:
-                for fct in self.fct_list:
-                    fct[1] = task.status.waiting
-                return self.get_next()
-            return None
 
         def add_foo(self, fct):
             self.fct_list.append([fct, task.status.waiting])

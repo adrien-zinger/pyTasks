@@ -12,6 +12,19 @@ And you are just a beginner in python and the following syntax is good enough fo
 
 ## How to use it
 
+Simply use this folder as a thirdpartie.
+
+## Run the tests
+
+Install pipenv with python 3.8.2 then..
+
+```bash
+python -m pip install pipenv
+pipenv shell
+pipenv install -d
+python -m pytest
+```
+
 ### The basic
 ```python
 #Declare the functions that will be executed asynchronously
